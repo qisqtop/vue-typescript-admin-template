@@ -10,7 +10,7 @@ import { accessTokenAuth } from './security'
 import { connector, summarise } from 'swagger-routes-express'
 
 const app = express()
-const port = 9528
+const port = 8002
 
 // Compression
 app.use(compression())
