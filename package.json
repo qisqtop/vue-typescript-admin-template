@@ -5,7 +5,6 @@
   "author": "Chong Guo <armourcy@gmail.com>",
   "scripts": {
     "serve": "concurrently \"npm:mock\" \"vue-cli-service serve\"",
-    "test:unit": "jest --clearCache && vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "build:prod": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
@@ -63,7 +62,6 @@
     "@types/express": "^4.17.11",
     "@types/faker": "^5.5.0",
     "@types/file-saver": "^2.0.1",
-    "@types/jest": "^26.0.22",
     "@types/js-cookie": "^2.2.6",
     "@types/lodash": "^4.14.168",
     "@types/morgan": "^1.9.2",
@@ -82,7 +80,6 @@
     "@vue/cli-plugin-pwa": "^4.5.12",
     "@vue/cli-plugin-router": "^4.5.12",
     "@vue/cli-plugin-typescript": "^4.5.12",
-    "@vue/cli-plugin-unit-jest": "^4.5.12",
     "@vue/cli-plugin-vuex": "^4.5.12",
     "@vue/cli-service": "^4.5.12",
     "@vue/eslint-config-standard": "^6.0.0",
@@ -101,16 +98,12 @@
     "sass-loader": "^10.1.1",
     "style-resources-loader": "^1.4.1",
     "swagger-routes-express": "^3.3.0",
-    "ts-jest": "^26.5.4",
     "ts-node-dev": "^1.1.6",
     "typescript": "4.2.3",
     "vue-cli-plugin-element": "^1.0.1",
     "vue-cli-plugin-style-resources-loader": "^0.1.5",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^5.30.0"
-  },
-  "bugs": {
-    "url": "https://github.com/armour/vue-typescript-admin-template/issues"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -127,8 +120,7 @@
       "vue-cli-service lint"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/armour/vue-typescript-admin-template.git"
+  "engine":{
+    "node": "<15"
   }
 }
