@@ -46,7 +46,7 @@ import { Component, Vue } from 'vue-property-decorator'
   name: 'UnfixedHeaderTable'
 })
 export default class extends Vue {
-  private tableData = [
+  public tableData = [
     {
       name: 'fruit-1',
       apple: 'apple-10',
@@ -61,6 +61,6 @@ export default class extends Vue {
     }
   ]
 
-  private formThead = ['apple', 'banana']
+  public formThead = ['apple', 'banana']
 }
 </script>

@@ -102,8 +102,8 @@ import '@/assets/custom-theme/index.css' // the theme changed version element-ui
   name: 'Theme'
 })
 export default class extends Vue {
-  private theme = false
-  private tags = [
+  public theme = false
+  public tags = [
     { name: 'Tag One', type: '' },
     { name: 'Tag Two', type: 'info' },
     { name: 'Tag Three', type: 'success' },
@@ -111,11 +111,11 @@ export default class extends Vue {
     { name: 'Tag Five', type: 'danger' }
   ]
 
-  private slideValue = 50
-  private radio = 3
+  public slideValue = 50
+  public radio = 3
 
   @Watch('theme')
-  private onThemeChange() {
+  public onThemeChange() {
     toggleClass(document.body, 'custom-theme')
   }
 }

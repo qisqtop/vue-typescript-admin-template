@@ -57,13 +57,13 @@ import { ITransactionData } from '@/api/types'
   }
 })
 export default class extends Vue {
-  private list: ITransactionData[] = []
+  public list: ITransactionData[] = []
 
   created() {
     this.fetchData()
   }
 
-  private async fetchData() {
+  public async fetchData() {
     const { data } = await getTransactions({ /* Your params here */ })
     this.list = data.items.slice(0, 8)
   }

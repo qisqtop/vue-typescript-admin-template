@@ -22,10 +22,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'PanThumb'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private image!: string
-  @Prop({ default: '150px' }) private width!: string
-  @Prop({ default: '150px' }) private height!: string
-  @Prop({ default: 1 }) private zIndex!: number
+  @Prop({ required: true }) public image!: string
+  @Prop({ default: '150px' }) public width!: string
+  @Prop({ default: '150px' }) public height!: string
+  @Prop({ default: 1 }) public zIndex!: number
 }
 </script>
 

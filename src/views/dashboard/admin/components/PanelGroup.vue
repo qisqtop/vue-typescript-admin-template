@@ -133,7 +133,7 @@ import CountTo from 'vue-count-to'
   }
 })
 export default class extends Vue {
-  private handleSetLineChartData(type: string) {
+  public handleSetLineChartData(type: string) {
     this.$emit('handle-set-line-chart-data', type)
   }
 }

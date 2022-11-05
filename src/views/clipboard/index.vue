@@ -48,9 +48,9 @@ import { handleClipboard, clipboardSuccess } from '@/utils/clipboard' // use cli
   name: 'Clipboard'
 })
 export default class extends Vue {
-  private activeName = 'directly'
-  private inputData = 'https://github.com/Armour/vue-typescript-admin-template'
-  private clipboardSuccess = clipboardSuccess
-  private handleClipboard = handleClipboard
+  public activeName = 'directly'
+  public inputData = 'https://github.com/Armour/vue-typescript-admin-template'
+  public clipboardSuccess = clipboardSuccess
+  public handleClipboard = handleClipboard
 }
 </script>

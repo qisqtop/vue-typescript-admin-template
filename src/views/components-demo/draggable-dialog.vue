@@ -52,16 +52,16 @@ import { Select } from 'element-ui'
   name: 'DraggableDialogDemo'
 })
 export default class extends Vue {
-  private dialogTableVisible = false
-  private options = [
+  public dialogTableVisible = false
+  public options = [
     { value: '选项1', label: '黄金糕' },
     { value: '选项2', label: '双皮奶' },
     { value: '选项3', label: '蚵仔煎' },
     { value: '选项4', label: '龙须面' }
   ]
 
-  private value = ''
-  private gridData = [{
+  public value = ''
+  public gridData = [{
     date: '2016-05-02',
     name: 'John Smith',
     address: 'No.1518,  Jinshajiang Road, Putuo District'
@@ -80,7 +80,7 @@ export default class extends Vue {
   }]
 
   // v-el-dialog-draggable on-dialog-drag callback function
-  private handleDialogDrag() {
+  public handleDialogDrag() {
     (this.$refs.select as Select).blur()
   }
 }

@@ -122,7 +122,7 @@ import SocialSign from './components/SocialSignin.vue'
   }
 })
 export default class extends Vue {
-  private validateUsername = (rule: any, value: string, callback: Function) => {
+  public validateUsername = (rule: any, value: string, callback: Function) => {
     if (!isValidUsername(value)) {
       callback(new Error('Please enter the correct user name'))
     } else {
@@ -130,7 +130,7 @@ export default class extends Vue {
     }
   }
 
-  private validatePassword = (rule: any, value: string, callback: Function) => {
+  public validatePassword = (rule: any, value: string, callback: Function) => {
     if (value.length < 6) {
       callback(new Error('The password can not be less than 6 digits'))
     } else {
@@ -138,25 +138,25 @@ export default class extends Vue {
     }
   }
 
-  private loginForm = {
+  public loginForm = {
     username: 'admin',
     password: '111111'
   }
 
-  private loginRules = {
+  public loginRules = {
     username: [{ validator: this.validateUsername, trigger: 'blur' }],
     password: [{ validator: this.validatePassword, trigger: 'blur' }]
   }
 
-  private passwordType = 'password'
-  private loading = false
-  private showDialog = false
-  private capsTooltip = false
-  private redirect?: string
-  private otherQuery: Dictionary<string> = {}
+  public passwordType = 'password'
+  public loading = false
+  public showDialog = false
+  public capsTooltip = false
+  public redirect?: string
+  public otherQuery: Dictionary<string> = {}
 
   @Watch('$route', { immediate: true })
-  private onRouteChange(route: Route) {
+  public onRouteChange(route: Route) {
     // TODO: remove the "as Dictionary<string>" hack after v4 release for vue-router
     // See https://github.com/vuejs/vue-router/pull/2050 for details
     const query = route.query as Dictionary<string>
@@ -174,12 +174,12 @@ export default class extends Vue {
     }
   }
 
-  private checkCapslock(e: KeyboardEvent) {
+  public checkCapslock(e: KeyboardEvent) {
     const { key } = e
     this.capsTooltip = key !== null && key.length === 1 && (key >= 'A' && key <= 'Z')
   }
 
-  private showPwd() {
+  public showPwd() {
     if (this.passwordType === 'password') {
       this.passwordType = ''
     } else {
@@ -190,7 +190,7 @@ export default class extends Vue {
     })
   }
 
-  private handleLogin() {
+  public handleLogin() {
     (this.$refs.loginForm as ElForm).validate(async(valid: boolean) => {
       if (valid) {
         this.loading = true
@@ -211,7 +211,7 @@ export default class extends Vue {
     })
   }
 
-  private getOtherQuery(query: Dictionary<string>) {
+  public getOtherQuery(query: Dictionary<string>) {
     return Object.keys(query).reduce((acc, cur) => {
       if (cur !== 'redirect') {
         acc[cur] = query[cur]

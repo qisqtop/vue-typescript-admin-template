@@ -94,17 +94,17 @@ import { Table } from 'element-ui'
   name: 'SelectExcel'
 })
 export default class extends Vue {
-  private list: IArticleData[] = []
-  private listLoading = true
-  private multipleSelection = []
-  private downloadLoading = false
-  private filename = ''
+  public list: IArticleData[] = []
+  public listLoading = true
+  public multipleSelection = []
+  public downloadLoading = false
+  public filename = ''
 
   created() {
     this.fetchData()
   }
 
-  private async fetchData() {
+  public async fetchData() {
     this.listLoading = true
     const { data } = await getArticles({ /* Your params here */ })
     this.list = data.items
@@ -114,11 +114,11 @@ export default class extends Vue {
     }, 0.5 * 1000)
   }
 
-  private handleSelectionChange(value: any) {
+  public handleSelectionChange(value: any) {
     this.multipleSelection = value
   }
 
-  private handleDownload() {
+  public handleDownload() {
     if (this.multipleSelection.length) {
       this.downloadLoading = true
       const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']

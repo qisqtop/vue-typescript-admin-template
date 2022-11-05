@@ -82,19 +82,19 @@ const defaultId = () => 'vue-tinymce-' + +new Date() + ((Math.random() * 1000).t
   }
 })
 export default class extends Vue {
-  @Prop({ required: true }) private value!: string
-  @Prop({ default: defaultId }) private id!: string
-  @Prop({ default: () => [] }) private toolbar!: string[]
-  @Prop({ default: 'file edit insert view format table' }) private menubar!: string
-  @Prop({ default: '360px' }) private height!: string | number
-  @Prop({ default: 'auto' }) private width!: string | number
+  @Prop({ required: true }) public value!: string
+  @Prop({ default: defaultId }) public id!: string
+  @Prop({ default: () => [] }) public toolbar!: string[]
+  @Prop({ default: 'file edit insert view format table' }) public menubar!: string
+  @Prop({ default: '360px' }) public height!: string | number
+  @Prop({ default: 'auto' }) public width!: string | number
 
-  private hasChange = false
-  private hasInit = false
-  private fullscreen = false
+  public hasChange = false
+  public hasInit = false
+  public fullscreen = false
   // https://www.tiny.cloud/docs/configure/localization/#language
   // when adding a new language, please also add the corresponding lang file under public/tinymce/langs folder
-  private languageTypeList: { [key: string]: string } = {
+  public languageTypeList: { [key: string]: string } = {
     en: 'en',
     zh: 'zh_CN',
     es: 'es',
@@ -174,7 +174,7 @@ export default class extends Vue {
   }
 
   @Watch('language')
-  private onLanguageChange() {
+  public onLanguageChange() {
     const tinymceManager = (window as any).tinymce
     const tinymceInstance = tinymceManager.get(this.id)
     if (this.fullscreen) {
@@ -186,7 +186,7 @@ export default class extends Vue {
     this.$nextTick(() => tinymceManager.init(this.initOptions))
   }
 
-  private imageSuccessCBK(arr: IUploadObject[]) {
+  public imageSuccessCBK(arr: IUploadObject[]) {
     const tinymce = (window as any).tinymce.get(this.id)
     arr.forEach(v => {
       tinymce.insertContent(`<img class="wscnph" src="${v.url}" >`)

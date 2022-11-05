@@ -396,11 +396,11 @@ const calendarTypeKeyValue = calendarTypeOptions.reduce((acc: { [key: string]: s
   }
 })
 export default class extends Vue {
-  private tableKey = 0
-  private list: IArticleData[] = []
-  private total = 0
-  private listLoading = true
-  private listQuery = {
+  public tableKey = 0
+  public list: IArticleData[] = []
+  public total = 0
+  public listLoading = true
+  public listQuery = {
     page: 1,
     limit: 20,
     importance: undefined,
@@ -409,38 +409,38 @@ export default class extends Vue {
     sort: '+id'
   }
 
-  private importanceOptions = [1, 2, 3]
-  private calendarTypeOptions = calendarTypeOptions
-  private sortOptions = [
+  public importanceOptions = [1, 2, 3]
+  public calendarTypeOptions = calendarTypeOptions
+  public sortOptions = [
     { label: 'ID Ascending', key: '+id' },
     { label: 'ID Descending', key: '-id' }
   ]
 
-  private statusOptions = ['published', 'draft', 'deleted']
-  private showReviewer = false
-  private dialogFormVisible = false
-  private dialogStatus = ''
-  private textMap = {
+  public statusOptions = ['published', 'draft', 'deleted']
+  public showReviewer = false
+  public dialogFormVisible = false
+  public dialogStatus = ''
+  public textMap = {
     update: 'Edit',
     create: 'Create'
   }
 
-  private dialogPageviewsVisible = false
-  private pageviewsData = []
-  private rules = {
+  public dialogPageviewsVisible = false
+  public pageviewsData = []
+  public rules = {
     type: [{ required: true, message: 'type is required', trigger: 'change' }],
     timestamp: [{ required: true, message: 'timestamp is required', trigger: 'change' }],
     title: [{ required: true, message: 'title is required', trigger: 'blur' }]
   }
 
-  private downloadLoading = false
-  private tempArticleData = defaultArticleData
+  public downloadLoading = false
+  public tempArticleData = defaultArticleData
 
   created() {
     this.getList()
   }
 
-  private async getList() {
+  public async getList() {
     this.listLoading = true
     const { data } = await getArticles(this.listQuery)
     this.list = data.items
@@ -451,12 +451,12 @@ export default class extends Vue {
     }, 0.5 * 1000)
   }
 
-  private handleFilter() {
+  public handleFilter() {
     this.listQuery.page = 1
     this.getList()
   }
 
-  private handleModifyStatus(row: any, status: string) {
+  public handleModifyStatus(row: any, status: string) {
     this.$message({
       message: '操作成功',
       type: 'success'
@@ -464,14 +464,14 @@ export default class extends Vue {
     row.status = status
   }
 
-  private sortChange(data: any) {
+  public sortChange(data: any) {
     const { prop, order } = data
     if (prop === 'id') {
       this.sortByID(order)
     }
   }
 
-  private sortByID(order: string) {
+  public sortByID(order: string) {
     if (order === 'ascending') {
       this.listQuery.sort = '+id'
     } else {
@@ -480,16 +480,16 @@ export default class extends Vue {
     this.handleFilter()
   }
 
-  private getSortClass(key: string) {
+  public getSortClass(key: string) {
     const sort = this.listQuery.sort
     return sort === `+${key}` ? 'ascending' : 'descending'
   }
 
-  private resetTempArticleData() {
+  public resetTempArticleData() {
     this.tempArticleData = cloneDeep(defaultArticleData)
   }
 
-  private handleCreate() {
+  public handleCreate() {
     this.resetTempArticleData()
     this.dialogStatus = 'create'
     this.dialogFormVisible = true
@@ -498,7 +498,7 @@ export default class extends Vue {
     })
   }
 
-  private createData() {
+  public createData() {
     (this.$refs.dataForm as Form).validate(async(valid) => {
       if (valid) {
         const articleData = this.tempArticleData
@@ -518,7 +518,7 @@ export default class extends Vue {
     })
   }
 
-  private handleUpdate(row: any) {
+  public handleUpdate(row: any) {
     this.tempArticleData = Object.assign({}, row)
     this.tempArticleData.timestamp = +new Date(this.tempArticleData.timestamp)
     this.dialogStatus = 'update'
@@ -528,7 +528,7 @@ export default class extends Vue {
     })
   }
 
-  private updateData() {
+  public updateData() {
     (this.$refs.dataForm as Form).validate(async(valid) => {
       if (valid) {
         const tempData = Object.assign({}, this.tempArticleData)
@@ -547,7 +547,7 @@ export default class extends Vue {
     })
   }
 
-  private handleDelete(row: any, index: number) {
+  public handleDelete(row: any, index: number) {
     this.$notify({
       title: 'Success',
       message: 'Delete Successfully',
@@ -557,13 +557,13 @@ export default class extends Vue {
     this.list.splice(index, 1)
   }
 
-  private async handleGetPageviews(pageviews: string) {
+  public async handleGetPageviews(pageviews: string) {
     const { data } = await getPageviews({ pageviews })
     this.pageviewsData = data.pageviews
     this.dialogPageviewsVisible = true
   }
 
-  private handleDownload() {
+  public handleDownload() {
     this.downloadLoading = true
     const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
     const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']

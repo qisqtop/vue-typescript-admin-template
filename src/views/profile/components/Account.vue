@@ -25,9 +25,9 @@ import { IProfile } from '../index.vue'
   name: 'Account'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private user!: IProfile
+  @Prop({ required: true }) public user!: IProfile
 
-  private submit() {
+  public submit() {
     this.$message({
       message: 'User information has been updated successfully',
       type: 'success',

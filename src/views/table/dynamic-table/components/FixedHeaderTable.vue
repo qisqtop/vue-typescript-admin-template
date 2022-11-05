@@ -49,7 +49,7 @@ const defaultFormThead = ['apple', 'banana']
   name: 'FixedHeaderTable'
 })
 export default class extends Vue {
-  private tableData = [
+  public tableData = [
     {
       name: 'fruit-1',
       apple: 'apple-10',
@@ -64,13 +64,13 @@ export default class extends Vue {
     }
   ]
 
-  private key = 1 // Table key
-  private formTheadOptions = ['apple', 'banana', 'orange']
-  private checkboxVal = defaultFormThead
-  private formThead = defaultFormThead // Default header
+  public key = 1 // Table key
+  public formTheadOptions = ['apple', 'banana', 'orange']
+  public checkboxVal = defaultFormThead
+  public formThead = defaultFormThead // Default header
 
   @Watch('checkboxVal')
-  private onCheckboxValChange(value: string[]) {
+  public onCheckboxValChange(value: string[]) {
     this.formThead = this.formTheadOptions.filter(i => value.indexOf(i) >= 0)
     this.key = this.key + 1 // Ensure the table will be re-rendered each time
   }

@@ -37,8 +37,8 @@ import DraggableSelect from '@/components/DraggableSelect/index.vue'
   }
 })
 export default class extends Vue {
-  private value = ['Apple', 'Banana', 'Orange']
-  private options = [{
+  public value = ['Apple', 'Banana', 'Orange']
+  public options = [{
     value: 'Apple',
     label: 'Apple'
   }, {

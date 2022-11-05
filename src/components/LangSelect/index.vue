@@ -63,7 +63,7 @@ export default class extends Vue {
     return AppModule.language
   }
 
-  private handleSetLanguage(lang: string) {
+  public handleSetLanguage(lang: string) {
     this.$i18n.locale = lang
     AppModule.SetLanguage(lang)
     document.documentElement.lang = lang

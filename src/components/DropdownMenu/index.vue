@@ -31,12 +31,12 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'DropdownMenu'
 })
 export default class extends Vue {
-  @Prop({ default: () => [] }) private items!: any[]
-  @Prop({ default: 'vue' }) private title!: string
+  @Prop({ default: () => [] }) public items!: any[]
+  @Prop({ default: 'vue' }) public title!: string
 
-  private isActive = false
+  public isActive = false
 
-  private clickTitle() {
+  public clickTitle() {
     this.isActive = !this.isActive
   }
 }

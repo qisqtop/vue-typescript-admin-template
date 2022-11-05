@@ -177,10 +177,10 @@ import local from './local'
   name: 'I18n'
 })
 export default class extends Vue {
-  private date = ''
-  private value = ''
-  private options: any[] = []
-  private tableData = [{
+  public date = ''
+  public value = ''
+  public options: any[] = []
+  public tableData = [{
     date: '2016-05-03',
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles'
@@ -224,7 +224,7 @@ export default class extends Vue {
     this.setOptions() // set default select options
   }
 
-  private setOptions() {
+  public setOptions() {
     this.options = [
       {
         value: '1',

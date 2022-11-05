@@ -92,8 +92,8 @@ const defalutList = [
   }
 })
 export default class extends Vue {
-  private visibility = 'all'
-  private todos = defalutList
+  public visibility = 'all'
+  public todos = defalutList
 
   get allChecked() {
     return this.todos.every(todo => todo.done)
@@ -111,11 +111,11 @@ export default class extends Vue {
     return this.todos.filter(todo => !todo.done).length
   }
 
-  private setLocalStorage() {
+  public setLocalStorage() {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos))
   }
 
-  private addTodo(e: KeyboardEvent) {
+  public addTodo(e: KeyboardEvent) {
     const text = (e.target as HTMLInputElement).value
     if (text.trim()) {
       this.todos.push({
@@ -127,27 +127,27 @@ export default class extends Vue {
     (e as any).target.value = ''
   }
 
-  private toggleTodo(todo: ITodo) {
+  public toggleTodo(todo: ITodo) {
     todo.done = !todo.done
     this.setLocalStorage()
   }
 
-  private deleteTodo(todo: ITodo) {
+  public deleteTodo(todo: ITodo) {
     this.todos.splice(this.todos.indexOf(todo), 1)
     this.setLocalStorage()
   }
 
-  private editTodo({ todo, value }: { todo: ITodo, value: string }) {
+  public editTodo({ todo, value }: { todo: ITodo, value: string }) {
     todo.text = value
     this.setLocalStorage()
   }
 
-  private clearCompleted() {
+  public clearCompleted() {
     this.todos = this.todos.filter(todo => !todo.done)
     this.setLocalStorage()
   }
 
-  private toggleAll({ done }: { done: boolean }) {
+  public toggleAll({ done }: { done: boolean }) {
     this.todos.forEach(todo => {
       todo.done = done
       this.setLocalStorage()

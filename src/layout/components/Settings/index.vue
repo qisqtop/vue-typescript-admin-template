@@ -92,7 +92,7 @@ export default class extends Vue {
     SettingsModule.ChangeSetting({ key: 'sidebarTextTheme', value })
   }
 
-  private themeChange(value: string) {
+  public themeChange(value: string) {
     SettingsModule.ChangeSetting({ key: 'theme', value })
   }
 }

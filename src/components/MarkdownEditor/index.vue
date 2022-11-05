@@ -20,17 +20,17 @@ const defaultId = () => 'markdown-editor-' + +new Date() + ((Math.random() * 100
   name: 'MarkdownEditor'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private initialValue!: string
-  @Prop({ default: defaultId }) private id!: string
-  @Prop({ default: () => defaultOptions }) private options!: EditorOptions
-  @Prop({ default: 'markdown' }) private mode!: string
-  @Prop({ default: '300px' }) private height!: string
-  @Prop({ default: 'en' }) private language!: string
+  @Prop({ required: true }) public initialValue!: string
+  @Prop({ default: defaultId }) public id!: string
+  @Prop({ default: () => defaultOptions }) public options!: EditorOptions
+  @Prop({ default: 'markdown' }) public mode!: string
+  @Prop({ default: '300px' }) public height!: string
+  @Prop({ default: 'en' }) public language!: string
 
-  private markdownEditor?: Editor
+  public markdownEditor?: Editor
   // Mapping for local lang to tuiEditor lang
   // https://github.com/nhn/tui.editor/blob/master/apps/editor/docs/i18n.md#supported-languages
-  private languageTypeList: { [key: string]: string } = {
+  public languageTypeList: { [key: string]: string } = {
     en: 'en',
     zh: 'zh-CN',
     es: 'es',
@@ -48,20 +48,20 @@ export default class extends Vue {
   }
 
   @Watch('language')
-  private onLanguageChange() {
+  public onLanguageChange() {
     this.destroyEditor()
     this.initEditor()
   }
 
   @Watch('height')
-  private onHeightChange(value: string) {
+  public onHeightChange(value: string) {
     if (this.markdownEditor) {
       this.markdownEditor.height(value)
     }
   }
 
   @Watch('mode')
-  private onModeChange(value: string) {
+  public onModeChange(value: string) {
     if (this.markdownEditor) {
       this.markdownEditor.changeMode(value)
     }
@@ -75,7 +75,7 @@ export default class extends Vue {
     this.destroyEditor()
   }
 
-  private initEditor() {
+  public initEditor() {
     const editorElement = document.getElementById(this.id)
     if (!editorElement) return
     // eslint-disable-next-line new-cap
@@ -86,7 +86,7 @@ export default class extends Vue {
     this.markdownEditor.insertText(this.initialValue)
   }
 
-  private destroyEditor() {
+  public destroyEditor() {
     if (!this.markdownEditor) return
     this.markdownEditor.remove()
     this.markdownEditor = undefined

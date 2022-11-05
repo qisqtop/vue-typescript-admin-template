@@ -16,10 +16,10 @@ import ResizeMixin from './mixins/resize'
   name: 'LineChart'
 })
 export default class extends mixins(ResizeMixin) {
-  @Prop({ default: 'chart' }) private className!: string
-  @Prop({ default: 'chart' }) private id!: string
-  @Prop({ default: '200px' }) private width!: string
-  @Prop({ default: '200px' }) private height!: string
+  @Prop({ default: 'chart' }) public className!: string
+  @Prop({ default: 'chart' }) public id!: string
+  @Prop({ default: '200px' }) public width!: string
+  @Prop({ default: '200px' }) public height!: string
 
   mounted() {
     this.$nextTick(() => {
@@ -35,7 +35,7 @@ export default class extends mixins(ResizeMixin) {
     this.chart = null
   }
 
-  private initChart() {
+  public initChart() {
     this.chart = echarts.init(document.getElementById(this.id) as HTMLDivElement)
     this.chart.setOption({
       backgroundColor: '#394056',

@@ -214,7 +214,7 @@ import DropdownMenu from '@/components/DropdownMenu/index.vue'
   }
 })
 export default class extends Vue {
-  private validateLength = (rule: any, value: string, callback: Function) => {
+  public validateLength = (rule: any, value: string, callback: Function) => {
     if (value.length !== 6) {
       callback(new Error('请输入六个字符'))
     } else {
@@ -222,15 +222,15 @@ export default class extends Vue {
     }
   }
 
-  private demo = {
+  public demo = {
     title: ''
   }
 
-  private demoRules = {
+  public demoRules = {
     title: [{ validator: this.validateLength, trigger: 'change' }]
   }
 
-  private articleList = [
+  public articleList = [
     { title: '基础篇', href: 'https://juejin.im/post/59097cd7a22b9d0065fb61d2' },
     { title: '登录权限篇', href: 'https://juejin.im/post/591aa14f570c35006961acac' },
     { title: '实战篇', href: 'https://juejin.im/post/593121aa0ce4630057f70d35' },

@@ -66,11 +66,11 @@ import errGif from '@/assets/401-images/401.gif'
   name: 'Page401'
 })
 export default class extends Vue {
-  private errGif = errGif + '?' + +new Date()
-  private ewizardClap = 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646'
-  private dialogVisible = false
+  public errGif = errGif + '?' + +new Date()
+  public ewizardClap = 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646'
+  public dialogVisible = false
 
-  private back() {
+  public back() {
     if (this.$route.query.noGoBack) {
       this.$router.push({ path: '/dashboard' }).catch(err => {
         console.warn(err)

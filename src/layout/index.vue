@@ -67,7 +67,7 @@ export default class extends mixins(ResizeMixin) {
     return SettingsModule.fixedHeader
   }
 
-  private handleClickOutside() {
+  public handleClickOutside() {
     AppModule.CloseSideBar(false)
   }
 }

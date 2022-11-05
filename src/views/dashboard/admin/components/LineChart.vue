@@ -20,13 +20,13 @@ export interface ILineChartData {
   name: 'LineChart'
 })
 export default class extends mixins(ResizeMixin) {
-  @Prop({ required: true }) private chartData!: ILineChartData
-  @Prop({ default: 'chart' }) private className!: string
-  @Prop({ default: '100%' }) private width!: string
-  @Prop({ default: '350px' }) private height!: string
+  @Prop({ required: true }) public chartData!: ILineChartData
+  @Prop({ default: 'chart' }) public className!: string
+  @Prop({ default: '100%' }) public width!: string
+  @Prop({ default: '350px' }) public height!: string
 
   @Watch('chartData', { deep: true })
-  private onChartDataChange(value: ILineChartData) {
+  public onChartDataChange(value: ILineChartData) {
     this.setOptions(value)
   }
 
@@ -44,12 +44,12 @@ export default class extends mixins(ResizeMixin) {
     this.chart = null
   }
 
-  private initChart() {
+  public initChart() {
     this.chart = echarts.init(this.$el as HTMLDivElement, 'macarons')
     this.setOptions(this.chartData)
   }
 
-  private setOptions(chartData: ILineChartData) {
+  public setOptions(chartData: ILineChartData) {
     if (this.chart) {
       this.chart.setOption({
         xAxis: {

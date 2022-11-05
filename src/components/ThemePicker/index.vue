@@ -19,20 +19,20 @@ const ORIGINAL_THEME = '#409EFF' // default color
   name: 'ThemePicker'
 })
 export default class extends Vue {
-  private chalk = '' // The content of theme-chalk css
-  private theme = ''
+  public chalk = '' // The content of theme-chalk css
+  public theme = ''
 
   get defaultTheme() {
     return SettingsModule.theme
   }
 
   @Watch('defaultTheme', { immediate: true })
-  private onDefaultThemeChange(value: string) {
+  public onDefaultThemeChange(value: string) {
     this.theme = value
   }
 
   @Watch('theme')
-  private async onThemeChange(value: string) {
+  public async onThemeChange(value: string) {
     if (!value) return
     const oldValue = this.chalk ? this.theme : ORIGINAL_THEME
     const themeCluster = this.getThemeCluster(value.replace('#', ''))
@@ -83,7 +83,7 @@ export default class extends Vue {
     message.close()
   }
 
-  private updateStyle(style: string, oldCluster: string[], newCluster: string[]) {
+  public updateStyle(style: string, oldCluster: string[], newCluster: string[]) {
     let newStyle = style
     oldCluster.forEach((color, index) => {
       newStyle = newStyle.replace(new RegExp(color, 'ig'), newCluster[index])
@@ -91,7 +91,7 @@ export default class extends Vue {
     return newStyle
   }
 
-  private getCSSString(url: string, variable: string) {
+  public getCSSString(url: string, variable: string) {
     return new Promise<void>(resolve => {
       const xhr = new XMLHttpRequest()
       xhr.onreadystatechange = () => {
@@ -105,7 +105,7 @@ export default class extends Vue {
     })
   }
 
-  private getThemeCluster(theme: string) {
+  public getThemeCluster(theme: string) {
     const tintColor = (color: string, tint: number) => {
       let red = parseInt(color.slice(0, 2), 16)
       let green = parseInt(color.slice(2, 4), 16)

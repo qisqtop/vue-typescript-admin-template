@@ -72,8 +72,8 @@ const defaultProfile: IProfile = {
   }
 })
 export default class extends Vue {
-  private user = defaultProfile
-  private activeTab = 'activity'
+  public user = defaultProfile
+  public activeTab = 'activity'
 
   get name() {
     return UserModule.name
@@ -95,7 +95,7 @@ export default class extends Vue {
     this.getUser()
   }
 
-  private getUser() {
+  public getUser() {
     this.user = {
       name: this.name,
       email: this.email,

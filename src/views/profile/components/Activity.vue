@@ -106,15 +106,15 @@ import { Component, Vue } from 'vue-property-decorator'
   name: 'Activity'
 })
 export default class extends Vue {
-  private carouselImages = [
+  public carouselImages = [
     'https://wpimg.wallstcn.com/9679ffb0-9e0b-4451-9916-e21992218054.jpg',
     'https://wpimg.wallstcn.com/bcce3734-0837-4b9f-9261-351ef384f75a.jpg',
     'https://wpimg.wallstcn.com/d1d7b033-d75e-4cd6-ae39-fcd5f1c0a7c5.jpg',
     'https://wpimg.wallstcn.com/50530061-851b-4ca5-9dc5-2fead928a939.jpg'
   ]
 
-  private avatarPrefix = '?imageView2/1/w/80/h/80'
-  private carouselPrefix = '?imageView2/2/h/440'
+  public avatarPrefix = '?imageView2/1/w/80/h/80'
+  public carouselPrefix = '?imageView2/2/h/440'
 }
 </script>
 

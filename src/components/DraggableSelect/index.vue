@@ -20,9 +20,9 @@ import { Select } from 'element-ui'
   name: 'DraggableSelect'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private value!: string[]
+  @Prop({ required: true }) public value!: string[]
 
-  private sortable: Sortable | null = null
+  public sortable: Sortable | null = null
 
   get selectVal() {
     return [...this.value]
@@ -36,7 +36,7 @@ export default class extends Vue {
     this.setSort()
   }
 
-  private setSort() {
+  public setSort() {
     const draggableSelect = this.$refs.draggableSelect as Select
     const el = draggableSelect.$el.querySelectorAll('.el-select__tags > span')[0] as HTMLElement
     this.sortable = Sortable.create(el, {

@@ -31,10 +31,10 @@ import UploadExcelComponent from '@/components/UploadExcel/index.vue'
   }
 })
 export default class extends Vue {
-  private tableData: any = []
-  private tableHeader: string[] = []
+  public tableData: any = []
+  public tableHeader: string[] = []
 
-  private beforeUpload(file: File) {
+  public beforeUpload(file: File) {
     const isLt1M = file.size / 1024 / 1024 < 1
     if (isLt1M) {
       return true
@@ -46,7 +46,7 @@ export default class extends Vue {
     return false
   }
 
-  private handleSuccess({ results, header }: { results: any, header: string[]}) {
+  public handleSuccess({ results, header }: { results: any, header: string[]}) {
     this.tableData = results
     this.tableHeader = header
   }

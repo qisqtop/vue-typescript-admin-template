@@ -139,7 +139,7 @@ import BackToTop from '@/components/BackToTop/index.vue'
   }
 })
 export default class extends Vue {
-  private myBackToTopStyle = {
+  public myBackToTopStyle = {
     right: '50px',
     bottom: '50px',
     width: '40px',

@@ -71,22 +71,22 @@ import { IArticleData } from '@/api/types'
   }
 })
 export default class extends Vue {
-  @Prop({ default: () => [] }) private list1!: IArticleData[]
-  @Prop({ default: () => [] }) private list2!: IArticleData[]
-  @Prop({ default: 'list1' }) private list1Title!: string
-  @Prop({ default: 'list2' }) private list2Title!: string
-  @Prop({ default: '48%' }) private list1width!: string
-  @Prop({ default: '48%' }) private list2width!: string
+  @Prop({ default: () => [] }) public list1!: IArticleData[]
+  @Prop({ default: () => [] }) public list2!: IArticleData[]
+  @Prop({ default: 'list1' }) public list1Title!: string
+  @Prop({ default: 'list2' }) public list2Title!: string
+  @Prop({ default: '48%' }) public list1width!: string
+  @Prop({ default: '48%' }) public list2width!: string
 
-  private isNotInList1(v: IArticleData) {
+  public isNotInList1(v: IArticleData) {
     return this.list1.every(k => v.id !== k.id)
   }
 
-  private isNotInList2(v: IArticleData) {
+  public isNotInList2(v: IArticleData) {
     return this.list2.every(k => v.id !== k.id)
   }
 
-  private deleteEle(ele: IArticleData) {
+  public deleteEle(ele: IArticleData) {
     for (const item of this.list1) {
       if (item.id === ele.id) {
         const index = this.list1.indexOf(item)
@@ -99,7 +99,7 @@ export default class extends Vue {
     }
   }
 
-  private pushEle(ele: IArticleData) {
+  public pushEle(ele: IArticleData) {
     for (const item of this.list2) {
       if (item.id === ele.id) {
         const index = this.list2.indexOf(item)

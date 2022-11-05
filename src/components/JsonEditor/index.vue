@@ -22,12 +22,12 @@ require('script-loader!jsonlint')
   name: 'JsonEditor'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private value!: string
+  @Prop({ required: true }) public value!: string
 
-  private jsonEditor?: Editor
+  public jsonEditor?: Editor
 
   @Watch('value')
-  private onValueChange(value: string) {
+  public onValueChange(value: string) {
     if (this.jsonEditor) {
       const editorValue = this.jsonEditor.getValue()
       if (value !== editorValue) {

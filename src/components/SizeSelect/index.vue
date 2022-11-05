@@ -33,7 +33,7 @@ import { TagsViewModule } from '@/store/modules/tags-view'
   name: 'SizeSelect'
 })
 export default class extends Vue {
-  private sizeOptions = [
+  public sizeOptions = [
     { label: 'Default', value: 'default' },
     { label: 'Medium', value: 'medium' },
     { label: 'Small', value: 'small' },
@@ -44,7 +44,7 @@ export default class extends Vue {
     return AppModule.size
   }
 
-  private handleSetSize(size: string) {
+  public handleSetSize(size: string) {
     (this as any).$ELEMENT.size = size
     AppModule.SetSize(size)
     this.refreshView()
@@ -54,7 +54,7 @@ export default class extends Vue {
     })
   }
 
-  private refreshView() {
+  public refreshView() {
     // In order to make the cached page re-rendered
     TagsViewModule.delAllCachedViews()
     const { fullPath } = this.$route

@@ -66,11 +66,11 @@ import ScrollPane from './ScrollPane.vue'
   }
 })
 export default class extends Vue {
-  private visible = false
-  private top = 0
-  private left = 0
-  private selectedTag: ITagView = {}
-  private affixTags: ITagView[] = []
+  public visible = false
+  public top = 0
+  public left = 0
+  public selectedTag: ITagView = {}
+  public affixTags: ITagView[] = []
 
   get visitedViews() {
     return TagsViewModule.visitedViews
@@ -81,13 +81,13 @@ export default class extends Vue {
   }
 
   @Watch('$route')
-  private onRouteChange() {
+  public onRouteChange() {
     this.addTags()
     this.moveToCurrentTag()
   }
 
   @Watch('visible')
-  private onVisibleChange(value: boolean) {
+  public onVisibleChange(value: boolean) {
     if (value) {
       document.body.addEventListener('click', this.closeMenu)
     } else {
@@ -100,15 +100,15 @@ export default class extends Vue {
     this.addTags()
   }
 
-  private isActive(route: ITagView) {
+  public isActive(route: ITagView) {
     return route.path === this.$route.path
   }
 
-  private isAffix(tag: ITagView) {
+  public isAffix(tag: ITagView) {
     return tag.meta && tag.meta.affix
   }
 
-  private filterAffixTags(routes: RouteConfig[], basePath = '/') {
+  public filterAffixTags(routes: RouteConfig[], basePath = '/') {
     let tags: ITagView[] = []
     routes.forEach(route => {
       if (route.meta && route.meta.affix) {
@@ -130,7 +130,7 @@ export default class extends Vue {
     return tags
   }
 
-  private initTags() {
+  public initTags() {
     this.affixTags = this.filterAffixTags(this.routes)
     for (const tag of this.affixTags) {
       // Must have tag name
@@ -140,7 +140,7 @@ export default class extends Vue {
     }
   }
 
-  private addTags() {
+  public addTags() {
     const { name } = this.$route
     if (name) {
       TagsViewModule.addView(this.$route)
@@ -148,7 +148,7 @@ export default class extends Vue {
     return false
   }
 
-  private moveToCurrentTag() {
+  public moveToCurrentTag() {
     const tags = this.$refs.tag as any[] // TODO: better typescript support for router-link
     this.$nextTick(() => {
       for (const tag of tags) {
@@ -164,7 +164,7 @@ export default class extends Vue {
     })
   }
 
-  private refreshSelectedTag(view: ITagView) {
+  public refreshSelectedTag(view: ITagView) {
     TagsViewModule.delCachedView(view)
     const { fullPath } = view
     this.$nextTick(() => {
@@ -176,14 +176,14 @@ export default class extends Vue {
     })
   }
 
-  private closeSelectedTag(view: ITagView) {
+  public closeSelectedTag(view: ITagView) {
     TagsViewModule.delView(view)
     if (this.isActive(view)) {
       this.toLastView(TagsViewModule.visitedViews, view)
     }
   }
 
-  private closeOthersTags() {
+  public closeOthersTags() {
     if (this.selectedTag.fullPath !== this.$route.path && this.selectedTag.fullPath !== undefined) {
       this.$router.push(this.selectedTag.fullPath).catch(err => {
         console.warn(err)
@@ -193,7 +193,7 @@ export default class extends Vue {
     this.moveToCurrentTag()
   }
 
-  private closeAllTags(view: ITagView) {
+  public closeAllTags(view: ITagView) {
     TagsViewModule.delAllViews()
     if (this.affixTags.some(tag => tag.path === this.$route.path)) {
       return
@@ -201,7 +201,7 @@ export default class extends Vue {
     this.toLastView(TagsViewModule.visitedViews, view)
   }
 
-  private toLastView(visitedViews: ITagView[], view: ITagView) {
+  public toLastView(visitedViews: ITagView[], view: ITagView) {
     const latestView = visitedViews.slice(-1)[0]
     if (latestView !== undefined && latestView.fullPath !== undefined) {
       this.$router.push(latestView.fullPath).catch(err => {
@@ -222,7 +222,7 @@ export default class extends Vue {
     }
   }
 
-  private openMenu(tag: ITagView, e: MouseEvent) {
+  public openMenu(tag: ITagView, e: MouseEvent) {
     const menuMinWidth = 105
     const offsetLeft = this.$el.getBoundingClientRect().left // container margin left
     const offsetWidth = (this.$el as HTMLElement).offsetWidth // container width
@@ -238,11 +238,11 @@ export default class extends Vue {
     this.selectedTag = tag
   }
 
-  private closeMenu() {
+  public closeMenu() {
     this.visible = false
   }
 
-  private handleScroll() {
+  public handleScroll() {
     this.closeMenu()
   }
 }

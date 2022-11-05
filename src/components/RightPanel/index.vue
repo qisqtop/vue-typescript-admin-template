@@ -29,17 +29,17 @@ import { SettingsModule } from '@/store/modules/settings'
   name: 'RightPanel'
 })
 export default class extends Vue {
-  @Prop({ default: false }) private clickNotClose!: boolean
-  @Prop({ default: 250 }) private buttonTop!: number
+  @Prop({ default: false }) public clickNotClose!: boolean
+  @Prop({ default: 250 }) public buttonTop!: number
 
-  private show = false
+  public show = false
 
   get theme() {
     return SettingsModule.theme
   }
 
   @Watch('show')
-  private onShowChange(value: boolean) {
+  public onShowChange(value: boolean) {
     if (value && !this.clickNotClose) {
       this.addEventClick()
     }
@@ -59,11 +59,11 @@ export default class extends Vue {
     elx.remove()
   }
 
-  private addEventClick() {
+  public addEventClick() {
     window.addEventListener('click', this.closeSidebar)
   }
 
-  private closeSidebar(ev: MouseEvent) {
+  public closeSidebar(ev: MouseEvent) {
     const parent = (ev.target as HTMLElement).closest('.rightPanel')
     if (!parent) {
       this.show = false
@@ -71,7 +71,7 @@ export default class extends Vue {
     }
   }
 
-  private insertToBody() {
+  public insertToBody() {
     const elx = this.$refs.rightPanel as Element
     const body = document.querySelector('body')
     if (body) {

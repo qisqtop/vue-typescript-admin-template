@@ -15,9 +15,9 @@ import ResizeMixin from '@/components/Charts/mixins/resize'
   name: 'PieChart'
 })
 export default class extends mixins(ResizeMixin) {
-  @Prop({ default: 'chart' }) private className!: string
-  @Prop({ default: '100%' }) private width!: string
-  @Prop({ default: '300px' }) private height!: string
+  @Prop({ default: 'chart' }) public className!: string
+  @Prop({ default: '100%' }) public width!: string
+  @Prop({ default: '300px' }) public height!: string
 
   mounted() {
     this.$nextTick(() => {
@@ -33,7 +33,7 @@ export default class extends mixins(ResizeMixin) {
     this.chart = null
   }
 
-  private initChart() {
+  public initChart() {
     this.chart = echarts.init(this.$el as HTMLDivElement, 'macarons')
     this.chart.setOption({
       tooltip: {

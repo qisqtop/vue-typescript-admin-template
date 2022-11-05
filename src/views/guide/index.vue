@@ -27,13 +27,13 @@ import steps from './steps'
   name: 'Guide'
 })
 export default class extends Vue {
-  private driver: Driver | null = null
+  public driver: Driver | null = null
 
   mounted() {
     this.driver = new Driver()
   }
 
-  private guide() {
+  public guide() {
     if (this.driver) {
       this.driver.defineSteps(steps)
       this.driver.start()

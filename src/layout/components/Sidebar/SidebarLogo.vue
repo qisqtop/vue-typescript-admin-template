@@ -41,9 +41,9 @@ import settings from '@/settings'
   name: 'SidebarLogo'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private collapse!: boolean
+  @Prop({ required: true }) public collapse!: boolean
 
-  private title = settings.title
+  public title = settings.title
 }
 </script>
 

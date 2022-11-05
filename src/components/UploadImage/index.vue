@@ -52,24 +52,24 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'UploadImage'
 })
 export default class extends Vue {
-  @Prop({ default: '' }) private value!: string
+  @Prop({ default: '' }) public value!: string
 
-  private tempUrl = ''
-  private dataObj = { token: '', key: '' }
+  public tempUrl = ''
+  public dataObj = { token: '', key: '' }
 
   get imageUrl() {
     return this.value
   }
 
-  private emitInput(value: string) {
+  public emitInput(value: string) {
     this.$emit('input', value)
   }
 
-  private rmImage() {
+  public rmImage() {
     this.emitInput('')
   }
 
-  private handleImageSuccess(res: any) {
+  public handleImageSuccess(res: any) {
     this.emitInput(res.files.file)
   }
 }

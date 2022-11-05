@@ -34,18 +34,18 @@ import { SettingsModule } from '@/store/modules/settings'
 })
 export default class extends Vue {
   // You can add more Prop, see: https://www.dropzonejs.com/#configuration
-  @Prop({ required: true }) private id!: string
-  @Prop({ required: true }) private url!: string
-  @Prop({ default: 200 }) private thumbnailHeight!: number
-  @Prop({ default: 200 }) private thumbnailWidth!: number
-  @Prop({ default: 4 }) private maxFiles!: number
-  @Prop({ default: 5 }) private maxFilesize!: number // In MB
-  @Prop({ default: true }) private autoProcessQueue!: boolean
-  @Prop({ default: true }) private addRemoveLinks!: boolean
-  @Prop({ default: 'Drop files here to upload' }) private dictDefaultMessage!: string
-  @Prop({ default: 'Your broswer does not support dropzone.js' }) private dictFallbackMessage!: string
-  @Prop({ default: 'Remove' }) private dictRemoveFile!: string
-  @Prop({ default: 'Max Files Exceeded' }) private dictMaxFilesExceeded!: string
+  @Prop({ required: true }) public id!: string
+  @Prop({ required: true }) public url!: string
+  @Prop({ default: 200 }) public thumbnailHeight!: number
+  @Prop({ default: 200 }) public thumbnailWidth!: number
+  @Prop({ default: 4 }) public maxFiles!: number
+  @Prop({ default: 5 }) public maxFilesize!: number // In MB
+  @Prop({ default: true }) public autoProcessQueue!: boolean
+  @Prop({ default: true }) public addRemoveLinks!: boolean
+  @Prop({ default: 'Drop files here to upload' }) public dictDefaultMessage!: string
+  @Prop({ default: 'Your broswer does not support dropzone.js' }) public dictFallbackMessage!: string
+  @Prop({ default: 'Remove' }) public dictRemoveFile!: string
+  @Prop({ default: 'Max Files Exceeded' }) public dictMaxFilesExceeded!: string
 
   get dropzoneOptions() {
     return {
@@ -68,11 +68,11 @@ export default class extends Vue {
   }
 
   // You can add more Event handler, see: https://rowanwins.github.io/vue-dropzone/docs/dist/#/events
-  private dropzoneSuccess(file: File, response: any) {
+  public dropzoneSuccess(file: File, response: any) {
     this.$emit('dropzone-success', file, response)
   }
 
-  private dropzoneRemovedFile(file: File, error: Error, xhr: XMLHttpRequest) {
+  public dropzoneRemovedFile(file: File, error: Error, xhr: XMLHttpRequest) {
     this.$emit('dropzone-removed-file', file, error, xhr)
   }
 }

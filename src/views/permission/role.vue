@@ -146,14 +146,14 @@ const defaultRole: IRole = {
   name: 'RolePermission'
 })
 export default class extends Vue {
-  private role = Object.assign({}, defaultRole)
-  private reshapedRoutes: RouteConfig[] = []
-  private serviceRoutes: RouteConfig[] = []
-  private rolesList: IRole[] = []
-  private dialogVisible = false
-  private dialogType = 'new'
-  private checkStrictly = false
-  private defaultProps = {
+  public role = Object.assign({}, defaultRole)
+  public reshapedRoutes: RouteConfig[] = []
+  public serviceRoutes: RouteConfig[] = []
+  public rolesList: IRole[] = []
+  public dialogVisible = false
+  public dialogType = 'new'
+  public checkStrictly = false
+  public defaultProps = {
     children: 'children',
     label: 'title'
   }
@@ -168,18 +168,18 @@ export default class extends Vue {
     this.getRoles()
   }
 
-  private async getRoutes() {
+  public async getRoutes() {
     const { data } = await getRoutes({ /* Your params here */ })
     this.serviceRoutes = data.routes
     this.reshapedRoutes = this.reshapeRoutes(data.routes)
   }
 
-  private async getRoles() {
+  public async getRoles() {
     const { data } = await getRoles({ /* Your params here */ })
     this.rolesList = data.items
   }
 
-  private generateTreeData(routes: RouteConfig[]) {
+  public generateTreeData(routes: RouteConfig[]) {
     const data: IRoutesTreeData[] = []
     for (const route of routes) {
       const tmp: IRoutesTreeData = {
@@ -198,7 +198,7 @@ export default class extends Vue {
   }
 
   // Reshape the routes structure so that it looks the same as the sidebar
-  private reshapeRoutes(routes: RouteConfig[], basePath = '/') {
+  public reshapeRoutes(routes: RouteConfig[], basePath = '/') {
     const reshapedRoutes: RouteConfig[] = []
     for (let route of routes) {
       // Skip hidden routes
@@ -224,7 +224,7 @@ export default class extends Vue {
     return reshapedRoutes
   }
 
-  private flattenRoutes(routes: RouteConfig[]) {
+  public flattenRoutes(routes: RouteConfig[]) {
     let data: RouteConfig[] = []
     routes.forEach(route => {
       data.push(route)
@@ -238,7 +238,7 @@ export default class extends Vue {
     return data
   }
 
-  private handleCreateRole() {
+  public handleCreateRole() {
     this.role = Object.assign({}, defaultRole)
     if (this.$refs.tree) {
       (this.$refs.tree as Tree).setCheckedKeys([])
@@ -247,7 +247,7 @@ export default class extends Vue {
     this.dialogVisible = true
   }
 
-  private handleEdit(scope: any) {
+  public handleEdit(scope: any) {
     this.dialogType = 'edit'
     this.dialogVisible = true
     this.checkStrictly = true
@@ -262,7 +262,7 @@ export default class extends Vue {
     })
   }
 
-  private handleDelete(scope: any) {
+  public handleDelete(scope: any) {
     const { $index, row } = scope
     this.$confirm('Confirm to remove the role?', 'Warning', {
       confirmButtonText: 'Confirm',
@@ -280,7 +280,7 @@ export default class extends Vue {
       .catch(err => { console.error(err) })
   }
 
-  private generateTree(routes: RouteConfig[], basePath = '/', checkedKeys: string[]) {
+  public generateTree(routes: RouteConfig[], basePath = '/', checkedKeys: string[]) {
     const res: RouteConfig[] = []
     for (const route of routes) {
       const routePath = path.resolve(basePath, route.path)
@@ -295,7 +295,7 @@ export default class extends Vue {
     return res
   }
 
-  private async confirmRole() {
+  public async confirmRole() {
     const isEdit = this.dialogType === 'edit'
     const checkedKeys = (this.$refs.tree as Tree).getCheckedKeys()
 
@@ -330,7 +330,7 @@ export default class extends Vue {
   }
 
   // Reference: src/layout/components/Sidebar/SidebarItem.vue
-  private onlyOneShowingChild(children: RouteConfig[] = [], parent: RouteConfig) {
+  public onlyOneShowingChild(children: RouteConfig[] = [], parent: RouteConfig) {
     let onlyOneChild = null
     const showingChildren = children.filter(item => !item.meta || !item.meta.hidden)
     // When there is only one child route, the child route is displayed by default

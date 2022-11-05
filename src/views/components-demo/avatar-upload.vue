@@ -45,21 +45,21 @@ import PanThumb from '@/components/PanThumb/index.vue'
   }
 })
 export default class extends Vue {
-  private showImageUpload = false
-  private image = 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191'
-  private params = { someParams: 'your_params_goes_here' }
-  private headers = { smail: '*_~' }
+  public showImageUpload = false
+  public image = 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191'
+  public params = { someParams: 'your_params_goes_here' }
+  public headers = { smail: '*_~' }
 
-  private toggleShow() {
+  public toggleShow() {
     this.showImageUpload = !this.showImageUpload
   }
 
-  private onCropUploadSuccess(jsonData: any, field: string) {
+  public onCropUploadSuccess(jsonData: any, field: string) {
     this.showImageUpload = false
     this.image = jsonData.files[field]
   }
 
-  private onClose() {
+  public onClose() {
     this.showImageUpload = false
   }
 }

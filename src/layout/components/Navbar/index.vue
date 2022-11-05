@@ -111,11 +111,11 @@ export default class extends Vue {
     return UserModule.avatar
   }
 
-  private toggleSideBar() {
+  public toggleSideBar() {
     AppModule.ToggleSideBar(false)
   }
 
-  private async logout() {
+  public async logout() {
     await UserModule.LogOut()
     this.$router.push(`/login?redirect=${this.$route.fullPath}`).catch(err => {
       console.warn(err)

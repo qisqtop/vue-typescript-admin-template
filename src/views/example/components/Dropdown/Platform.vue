@@ -32,9 +32,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'PlatformDropdown'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private value!: string[]
+  @Prop({ required: true }) public value!: string[]
 
-  private platformsOptions = [
+  public platformsOptions = [
     { key: 'a-platform', name: 'a-platform' },
     { key: 'b-platform', name: 'b-platform' },
     { key: 'c-platform', name: 'c-platform' }

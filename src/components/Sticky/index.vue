@@ -18,15 +18,15 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'Sticky'
 })
 export default class extends Vue {
-  @Prop({ default: 0 }) private stickyTop!: number
-  @Prop({ default: 1 }) private zIndex!: number
-  @Prop({ default: '' }) private className!: string
+  @Prop({ default: 0 }) public stickyTop!: number
+  @Prop({ default: 1 }) public zIndex!: number
+  @Prop({ default: '' }) public className!: string
 
-  private active = false
-  private position = ''
-  private isSticky = false
-  private width = 'auto'
-  private height = 'auto'
+  public active = false
+  public position = ''
+  public isSticky = false
+  public width = 'auto'
+  public height = 'auto'
 
   mounted() {
     this.height = this.$el.getBoundingClientRect().height.toString() + 'px'
@@ -43,7 +43,7 @@ export default class extends Vue {
     window.removeEventListener('resize', this.handleResize)
   }
 
-  private sticky() {
+  public sticky() {
     if (this.active) {
       return
     }
@@ -53,7 +53,7 @@ export default class extends Vue {
     this.isSticky = true
   }
 
-  private handleReset() {
+  public handleReset() {
     if (!this.active) {
       return
     }
@@ -63,7 +63,7 @@ export default class extends Vue {
     this.isSticky = false
   }
 
-  private handleScroll() {
+  public handleScroll() {
     const width = this.$el.getBoundingClientRect().width
     this.width = (width.toString() + 'px') || 'auto'
     const offsetTop = this.$el.getBoundingClientRect().top
@@ -74,7 +74,7 @@ export default class extends Vue {
     this.handleReset()
   }
 
-  private handleResize() {
+  public handleResize() {
     if (this.isSticky) {
       this.width = this.$el.getBoundingClientRect().width.toString() + 'px'
     }

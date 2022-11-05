@@ -32,7 +32,7 @@ const jsonData = '[{"items":[{"market_type":"forexdata","symbol":"XAUUSD"},{"mar
   }
 })
 export default class extends Vue {
-  private value = JSON.parse(jsonData)
+  public value = JSON.parse(jsonData)
 }
 </script>
 

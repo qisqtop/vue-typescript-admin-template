@@ -35,22 +35,22 @@ import XLSX from 'xlsx'
   name: 'UploadExcel'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private beforeUpload!: Function
-  @Prop({ required: true }) private onSuccess!: Function
+  @Prop({ required: true }) public beforeUpload!: Function
+  @Prop({ required: true }) public onSuccess!: Function
 
-  private loading = false
-  private excelData = {
+  public loading = false
+  public excelData = {
     header: null,
     results: null
   }
 
-  private generateData(header: any, results: any) {
+  public generateData(header: any, results: any) {
     this.excelData.header = header
     this.excelData.results = results
     this.onSuccess && this.onSuccess(this.excelData)
   }
 
-  private handleDrop(e: DragEvent) {
+  public handleDrop(e: DragEvent) {
     e.stopPropagation()
     e.preventDefault()
     if (this.loading) return
@@ -71,7 +71,7 @@ export default class extends Vue {
     e.preventDefault()
   }
 
-  private handleDragover(e: DragEvent) {
+  public handleDragover(e: DragEvent) {
     e.stopPropagation()
     e.preventDefault()
     if (e.dataTransfer) {
@@ -79,11 +79,11 @@ export default class extends Vue {
     }
   }
 
-  private handleUpload() {
+  public handleUpload() {
     (this.$refs['excel-upload-input'] as HTMLInputElement).click()
   }
 
-  private handleClick(e: MouseEvent) {
+  public handleClick(e: MouseEvent) {
     const files = (e.target as HTMLInputElement).files
     if (files) {
       const rawFile = files[0] // only use files[0]
@@ -91,7 +91,7 @@ export default class extends Vue {
     }
   }
 
-  private upload(rawFile: File) {
+  public upload(rawFile: File) {
     (this.$refs['excel-upload-input'] as HTMLInputElement).value = '' // Fixes can't select the same excel
     if (!this.beforeUpload) {
       this.readerData(rawFile)
@@ -103,7 +103,7 @@ export default class extends Vue {
     }
   }
 
-  private readerData(rawFile: File) {
+  public readerData(rawFile: File) {
     this.loading = true
     const reader = new FileReader()
     reader.onload = e => {
@@ -119,7 +119,7 @@ export default class extends Vue {
     reader.readAsArrayBuffer(rawFile)
   }
 
-  private getHeaderRow(sheet: { [key: string ]: any }) {
+  public getHeaderRow(sheet: { [key: string ]: any }) {
     const headers: string[] = []
     const range = XLSX.utils.decode_range(sheet['!ref'])
     const R = range.s.r
@@ -137,7 +137,7 @@ export default class extends Vue {
     return headers
   }
 
-  private isExcel(file: File) {
+  public isExcel(file: File) {
     return /\.(xlsx|xls|csv)$/.test(file.name)
   }
 }

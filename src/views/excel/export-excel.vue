@@ -95,18 +95,18 @@ import BookTypeOption from './components/BookTypeOption.vue'
   }
 })
 export default class extends Vue {
-  private list: IArticleData[] = []
-  private listLoading = true
-  private downloadLoading = false
-  private filename = ''
-  private autoWidth = true
-  private bookType = 'xlsx'
+  public list: IArticleData[] = []
+  public listLoading = true
+  public downloadLoading = false
+  public filename = ''
+  public autoWidth = true
+  public bookType = 'xlsx'
 
   created() {
     this.fetchData()
   }
 
-  private async fetchData() {
+  public async fetchData() {
     this.listLoading = true
     const { data } = await getArticles({ /* Your params here */ })
     this.list = data.items
@@ -116,7 +116,7 @@ export default class extends Vue {
     }, 0.5 * 1000)
   }
 
-  private handleDownload() {
+  public handleDownload() {
     this.downloadLoading = true
     const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']
     const filterVal = ['id', 'title', 'author', 'pageviews', 'timestamp']

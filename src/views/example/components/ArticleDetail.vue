@@ -182,9 +182,9 @@ import { Form } from 'element-ui'
   }
 })
 export default class extends Vue {
-  @Prop({ default: false }) private isEdit!: boolean
+  @Prop({ default: false }) public isEdit!: boolean
 
-  private validateRequire = (rule: any, value: string, callback: Function) => {
+  public validateRequire = (rule: any, value: string, callback: Function) => {
     if (value === '') {
       if (rule.field === 'imageURL') {
         this.$message({
@@ -203,7 +203,7 @@ export default class extends Vue {
     }
   }
 
-  private validateSourceUrl = (rule: any, value: string, callback: any) => {
+  public validateSourceUrl = (rule: any, value: string, callback: any) => {
     if (value) {
       if (isValidURL(value)) {
         callback()
@@ -219,18 +219,18 @@ export default class extends Vue {
     }
   }
 
-  private postForm = Object.assign({}, defaultArticleData)
-  private loading = false
-  private userListOptions = []
-  private rules = {
+  public postForm = Object.assign({}, defaultArticleData)
+  public loading = false
+  public userListOptions = []
+  public rules = {
     imageURL: [{ validator: this.validateRequire }],
     title: [{ validator: this.validateRequire }],
     fullContent: [{ validator: this.validateRequire }],
     sourceURL: [{ validator: this.validateSourceUrl, trigger: 'blur' }]
   }
 
-  private tempTagView?: ITagView
-  private tinymceActive = true
+  public tempTagView?: ITagView
+  public tinymceActive = true
 
   get abstractContentLength() {
     return this.postForm.abstractContent.length
@@ -271,7 +271,7 @@ export default class extends Vue {
     this.tinymceActive = true
   }
 
-  private async fetchData(id: number) {
+  public async fetchData(id: number) {
     try {
       const { data } = await getArticle(id, { /* Your params here */ })
       this.postForm = data.article
@@ -288,7 +288,7 @@ export default class extends Vue {
     }
   }
 
-  private setTagsViewTitle(title: string) {
+  public setTagsViewTitle(title: string) {
     const tagView = this.tempTagView
     if (tagView) {
       tagView.title = `${title}-${this.postForm.id}`
@@ -296,11 +296,11 @@ export default class extends Vue {
     }
   }
 
-  private setPageTitle(title: string) {
+  public setPageTitle(title: string) {
     document.title = `${title} - ${this.postForm.id}`
   }
 
-  private submitForm() {
+  public submitForm() {
     (this.$refs.postForm as Form).validate(valid => {
       if (valid) {
         this.loading = true
@@ -322,7 +322,7 @@ export default class extends Vue {
     })
   }
 
-  private draftForm() {
+  public draftForm() {
     if (this.postForm.fullContent.length === 0 || this.postForm.title.length === 0) {
       this.$message({
         message: 'Title and detail content are required',
@@ -339,7 +339,7 @@ export default class extends Vue {
     this.postForm.status = 'draft'
   }
 
-  private async getRemoteUserList(name: string) {
+  public async getRemoteUserList(name: string) {
     const { data } = await getUsers({ name })
     if (!data.items) return
     this.userListOptions = data.items.map((v: any) => v.name)

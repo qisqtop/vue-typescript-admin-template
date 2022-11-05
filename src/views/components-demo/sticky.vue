@@ -140,16 +140,16 @@ import Sticky from '@/components/Sticky/index.vue'
   }
 })
 export default class extends Vue {
-  private time = Date
-  private url = ''
-  private platforms = ['a-platform']
-  private platformsOptions = [
+  public time = Date
+  public url = ''
+  public platforms = ['a-platform']
+  public platformsOptions = [
     { key: 'a-platform', name: 'platformA' },
     { key: 'b-platform', name: 'platformB' },
     { key: 'c-platform', name: 'platformC' }
   ]
 
-  private pickerOptions = {
+  public pickerOptions = {
     disabledDate(time: Date) {
       return time.getTime() > Date.now()
     }

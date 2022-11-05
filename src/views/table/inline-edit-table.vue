@@ -128,9 +128,9 @@ import { IArticleData } from '@/api/types'
   name: 'InlineEditTable'
 })
 export default class extends Vue {
-  private list: IArticleData[] = []
-  private listLoading = true
-  private listQuery = {
+  public list: IArticleData[] = []
+  public listLoading = true
+  public listQuery = {
     page: 1,
     limit: 10
   }
@@ -139,7 +139,7 @@ export default class extends Vue {
     this.getList()
   }
 
-  private async getList() {
+  public async getList() {
     this.listLoading = true
     const { data } = await getArticles(this.listQuery)
     const items = data.items
@@ -154,7 +154,7 @@ export default class extends Vue {
     }, 0.5 * 1000)
   }
 
-  private cancelEdit(row: any) {
+  public cancelEdit(row: any) {
     row.title = row.originalTitle
     row.edit = false
     this.$message({
@@ -163,7 +163,7 @@ export default class extends Vue {
     })
   }
 
-  private confirmEdit(row: any) {
+  public confirmEdit(row: any) {
     row.edit = false
     row.originalTitle = row.title
     this.$message({

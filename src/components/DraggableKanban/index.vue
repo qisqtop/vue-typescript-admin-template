@@ -30,9 +30,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   }
 })
 export default class extends Vue {
-  @Prop({ default: 'header' }) private headerText!: string
-  @Prop({ default: () => [] }) private list!: any[]
-  @Prop({ default: () => null }) private options!: object
+  @Prop({ default: 'header' }) public headerText!: string
+  @Prop({ default: () => [] }) public list!: any[]
+  @Prop({ default: () => null }) public options!: object
 }
 </script>
 

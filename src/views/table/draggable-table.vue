@@ -121,23 +121,23 @@ import { IArticleData } from '@/api/types'
   name: 'DraggableTable'
 })
 export default class extends Vue {
-  private list: IArticleData[] = []
-  private listLoading = true
-  private total = []
-  private oldList: number[] = []
-  private newList: number[] = []
-  private listQuery = {
+  public list: IArticleData[] = []
+  public listLoading = true
+  public total = []
+  public oldList: number[] = []
+  public newList: number[] = []
+  public listQuery = {
     page: 1,
     limit: 10
   }
 
-  private sortable: Sortable | null = null
+  public sortable: Sortable | null = null
 
   created() {
     this.getList()
   }
 
-  private async getList() {
+  public async getList() {
     this.listLoading = true
     const { data } = await getArticles(this.listQuery)
     this.list = data.items
@@ -153,7 +153,7 @@ export default class extends Vue {
     })
   }
 
-  private setSort() {
+  public setSort() {
     const el = (this.$refs.draggableTable as Vue).$el.querySelectorAll('.el-table__body-wrapper > table > tbody')[0] as HTMLElement
     this.sortable = Sortable.create(el, {
       ghostClass: 'sortable-ghost', // Class name for the drop placeholder

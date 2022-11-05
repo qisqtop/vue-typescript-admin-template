@@ -131,28 +131,28 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
   name: 'MaterialInput'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private value!: any
-  @Prop({ default: 'text' }) private type!: string
-  @Prop({ default: '' }) private id!: string
-  @Prop({ default: '' }) private icon!: string
-  @Prop({ default: '' }) private name!: string
-  @Prop({ default: '' }) private placeholder!: string
-  @Prop({ default: false }) private readonly!: boolean
-  @Prop({ default: false }) private disabled!: boolean
-  @Prop({ default: true }) private required!: boolean
-  @Prop({ default: 'off' }) private autoComplete!: string
-  @Prop({ default: 0 }) private min!: number | Date
-  @Prop({ default: 10000 }) private max!: number | Date
-  @Prop({ default: 1 }) private step!: number
-  @Prop({ default: 0 }) private minlength!: number
-  @Prop({ default: 20 }) private maxlength!: number
-  @Prop({ default: true }) private validateEvent!: boolean
+  @Prop({ required: true }) public value!: any
+  @Prop({ default: 'text' }) public type!: string
+  @Prop({ default: '' }) public id!: string
+  @Prop({ default: '' }) public icon!: string
+  @Prop({ default: '' }) public name!: string
+  @Prop({ default: '' }) public placeholder!: string
+  @Prop({ default: false }) public readonly!: boolean
+  @Prop({ default: false }) public disabled!: boolean
+  @Prop({ default: true }) public required!: boolean
+  @Prop({ default: 'off' }) public autoComplete!: string
+  @Prop({ default: 0 }) public min!: number | Date
+  @Prop({ default: 10000 }) public max!: number | Date
+  @Prop({ default: 1 }) public step!: number
+  @Prop({ default: 0 }) public minlength!: number
+  @Prop({ default: 20 }) public maxlength!: number
+  @Prop({ default: true }) public validateEvent!: boolean
 
-  private valueCopy = this.value
-  private focus = false
+  public valueCopy = this.value
+  public focus = false
 
   @Watch('value')
-  private onValueChange(value: any) {
+  public onValueChange(value: any) {
     this.valueCopy = value
   }
 
@@ -171,7 +171,7 @@ export default class extends Vue {
     return ''
   }
 
-  private handleInput(event: KeyboardEvent) {
+  public handleInput(event: KeyboardEvent) {
     const value = (event.target as HTMLInputElement).value
     this.$emit('input', value)
     if (this.$parent.$options.name === 'ElFormItem') {
@@ -183,12 +183,12 @@ export default class extends Vue {
     }
   }
 
-  private handleFocus(event: FocusEvent) {
+  public handleFocus(event: FocusEvent) {
     this.focus = true
     this.$emit('focus', event)
   }
 
-  private handleBlur(event: FocusEvent) {
+  public handleBlur(event: FocusEvent) {
     this.focus = false
     this.$emit('blur', event)
     if (this.$parent.$options.name === 'ElFormItem') {

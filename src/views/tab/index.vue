@@ -41,18 +41,18 @@ import TabPane from './components/TabPane.vue'
   }
 })
 export default class extends Vue {
-  private tabMapOptions = [
+  public tabMapOptions = [
     { label: 'China', key: 'CN' },
     { label: 'USA', key: 'US' },
     { label: 'Japan', key: 'JP' },
     { label: 'Eurozone', key: 'EU' }
   ]
 
-  private activeName = 'CN'
-  private createdTimes = 0
+  public activeName = 'CN'
+  public createdTimes = 0
 
   @Watch('activeName')
-  private onActiveNameChange(value: string) {
+  public onActiveNameChange(value: string) {
     this.$router.push(`${this.$route.path}?tab=${value}`).catch(err => {
       console.warn(err)
     })
@@ -66,7 +66,7 @@ export default class extends Vue {
     }
   }
 
-  private showCreatedTimes() {
+  public showCreatedTimes() {
     this.createdTimes = this.createdTimes + 1
   }
 }

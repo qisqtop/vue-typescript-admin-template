@@ -43,11 +43,11 @@ import i18n from '@/lang' // Internationalization
   name: 'HeaderSearch'
 })
 export default class extends Vue {
-  private search = ''
-  private show = false
-  private options: RouteConfig[] = []
-  private searchPool: RouteConfig[] = []
-  private fuse?: Fuse<RouteConfig>
+  public search = ''
+  public show = false
+  public options: RouteConfig[] = []
+  public searchPool: RouteConfig[] = []
+  public fuse?: Fuse<RouteConfig>
 
   get routes() {
     return PermissionModule.routes
@@ -58,22 +58,22 @@ export default class extends Vue {
   }
 
   @Watch('lang')
-  private onLangChange() {
+  public onLangChange() {
     this.searchPool = this.generateRoutes(this.routes)
   }
 
   @Watch('routes')
-  private onRoutesChange() {
+  public onRoutesChange() {
     this.searchPool = this.generateRoutes(this.routes)
   }
 
   @Watch('searchPool')
-  private onSearchPoolChange(value: RouteConfig[]) {
+  public onSearchPoolChange(value: RouteConfig[]) {
     this.initFuse(value)
   }
 
   @Watch('show')
-  private onShowChange(value: boolean) {
+  public onShowChange(value: boolean) {
     if (value) {
       document.body.addEventListener('click', this.close)
     } else {
@@ -85,20 +85,20 @@ export default class extends Vue {
     this.searchPool = this.generateRoutes(this.routes)
   }
 
-  private click() {
+  public click() {
     this.show = !this.show
     if (this.show) {
       this.$refs.headerSearchSelect && (this.$refs.headerSearchSelect as HTMLElement).focus()
     }
   }
 
-  private close() {
+  public close() {
     this.$refs.headerSearchSelect && (this.$refs.headerSearchSelect as HTMLElement).blur()
     this.options = []
     this.show = false
   }
 
-  private change(route: RouteConfig) {
+  public change(route: RouteConfig) {
     this.$router.push(route.path).catch(err => {
       console.warn(err)
     })
@@ -109,7 +109,7 @@ export default class extends Vue {
     })
   }
 
-  private initFuse(list: RouteConfig[]) {
+  public initFuse(list: RouteConfig[]) {
     this.fuse = new Fuse(list, {
       shouldSort: true,
       threshold: 0.4,
@@ -128,7 +128,7 @@ export default class extends Vue {
 
   // Filter out the routes that can be displayed in the sidebar
   // And generate the internationalized title
-  private generateRoutes(routes: RouteConfig[], basePath = '/', prefixTitle: string[] = []) {
+  public generateRoutes(routes: RouteConfig[], basePath = '/', prefixTitle: string[] = []) {
     let res: RouteConfig[] = []
 
     for (const router of routes) {
@@ -166,7 +166,7 @@ export default class extends Vue {
     return res
   }
 
-  private querySearch(query: string) {
+  public querySearch(query: string) {
     if (query !== '') {
       if (this.fuse) {
         this.options = this.fuse.search(query).map((result) => result.item)

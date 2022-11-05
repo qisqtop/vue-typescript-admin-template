@@ -29,12 +29,12 @@ import Dropzone from '@/components/Dropzone/index.vue'
   }
 })
 export default class extends Vue {
-  private dropzoneSuccess(file: File, response: any) {
+  public dropzoneSuccess(file: File, response: any) {
     this.$message({ message: 'Upload success', type: 'success' })
     console.log(file, response)
   }
 
-  private dropzoneRemovedFile(file: File, error: Error, xhr: XMLHttpRequest) {
+  public dropzoneRemovedFile(file: File, error: Error, xhr: XMLHttpRequest) {
     this.$message({ message: 'Delete success', type: 'success' })
     console.log(file, error, xhr)
   }

@@ -5,10 +5,10 @@ import { Component, Vue } from 'vue-property-decorator'
   name: 'ServiceWorkerUpdatePopup'
 })
 export default class extends Vue {
-  private refreshing = false
-  private notificationText = 'New content is available!'
-  private refreshButtonText = 'Refresh'
-  private registration: ServiceWorkerRegistration | null = null
+  public refreshing = false
+  public notificationText = 'New content is available!'
+  public refreshButtonText = 'Refresh'
+  public registration: ServiceWorkerRegistration | null = null
 
   created() {
     // Listen for swUpdated event and display refresh notification as required.
@@ -25,7 +25,7 @@ export default class extends Vue {
     // Avoid warning for missing template
   }
 
-  private showRefreshUI(e: Event) {
+  public showRefreshUI(e: Event) {
     // Display a notification inviting the user to refresh/reload the app due
     // to an app update being available.
     // The new service worker is installed, but not yet active.
@@ -51,7 +51,7 @@ export default class extends Vue {
     })
   }
 
-  private refreshApp() {
+  public refreshApp() {
     // Protect against missing registration.waiting.
     if (!this.registration || !this.registration.waiting) return
     this.registration.waiting.postMessage('skipWaiting')

@@ -126,13 +126,13 @@ import countTo from 'vue-count-to'
   }
 })
 export default class extends Vue {
-  private setStartVal = 0
-  private setEndVal = 2017
-  private setDuration = 4000
-  private setDecimals = 0
-  private setSeparator = ''
-  private setSuffix = ' rmb'
-  private setPrefix = '¥ '
+  public setStartVal = 0
+  public setEndVal = 2017
+  public setDuration = 4000
+  public setDecimals = 0
+  public setSeparator = ''
+  public setSuffix = ' rmb'
+  public setPrefix = '¥ '
 
   get startVal() {
     if (this.setStartVal) {
@@ -182,11 +182,11 @@ export default class extends Vue {
     return this.setPrefix
   }
 
-  private start() {
+  public start() {
     this.$refs.count && (this.$refs.count as any).start()
   }
 
-  private pauseResume() {
+  public pauseResume() {
     this.$refs.count && (this.$refs.count as any).pauseResume()
   }
 }

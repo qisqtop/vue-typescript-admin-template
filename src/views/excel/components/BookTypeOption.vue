@@ -22,9 +22,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'BookTypeOption'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private value!: string
+  @Prop({ required: true }) public value!: string
 
-  private options = ['xlsx', 'csv', 'txt']
+  public options = ['xlsx', 'csv', 'txt']
 
   get bookType() {
     return this.value

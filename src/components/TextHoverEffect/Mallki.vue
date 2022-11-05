@@ -17,8 +17,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'Mallki'
 })
 export default class extends Vue {
-  @Prop({ default: '' }) private className!: string
-  @Prop({ default: 'vue-typescript-admin' }) private text!: string
+  @Prop({ default: '' }) public className!: string
+  @Prop({ default: 'vue-typescript-admin' }) public text!: string
 }
 </script>
 

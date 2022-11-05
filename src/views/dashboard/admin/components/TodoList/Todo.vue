@@ -54,23 +54,23 @@ export interface ITodo {
   }
 })
 export default class extends Vue {
-  @Prop({ default: { text: '', done: false } }) private todo!: ITodo
+  @Prop({ default: { text: '', done: false } }) public todo!: ITodo
 
-  private editing = false
+  public editing = false
 
-  private deleteTodo(todo: ITodo) {
+  public deleteTodo(todo: ITodo) {
     this.$emit('delete-todo', todo)
   }
 
-  private editTodo({ todo, value }: { todo: ITodo, value: string }) {
+  public editTodo({ todo, value }: { todo: ITodo, value: string }) {
     this.$emit('edit-todo', { todo, value })
   }
 
-  private toggleTodo(todo: ITodo) {
+  public toggleTodo(todo: ITodo) {
     this.$emit('toggle-todo', todo)
   }
 
-  private doneEdit(e: KeyboardEvent) {
+  public doneEdit(e: KeyboardEvent) {
     const value = (e.target as HTMLInputElement).value.trim()
     const { todo } = this
     if (!value) {
@@ -84,7 +84,7 @@ export default class extends Vue {
     }
   }
 
-  private cancelEdit(e: KeyboardEvent) {
+  public cancelEdit(e: KeyboardEvent) {
     (e.target as HTMLInputElement).value = this.todo.text
     this.editing = false
   }

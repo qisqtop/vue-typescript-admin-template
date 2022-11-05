@@ -23,7 +23,7 @@ import { Component, Vue } from 'vue-property-decorator'
   name: 'Timeline'
 })
 export default class extends Vue {
-  private timeline = [
+  public timeline = [
     {
       timestamp: '2019/4/20',
       title: 'Update Github template',

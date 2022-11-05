@@ -63,15 +63,15 @@ import svgIcons from './svg-icons'
   name: 'Icons'
 })
 export default class extends Vue {
-  private svgIcons = svgIcons
-  private elementIcons = elementIcons
-  private handleClipboard = handleClipboard
+  public svgIcons = svgIcons
+  public elementIcons = elementIcons
+  public handleClipboard = handleClipboard
 
-  private generateElementIconCode(symbol: string) {
+  public generateElementIconCode(symbol: string) {
     return `<i class="el-icon-${symbol}" />`
   }
 
-  private generateSvgIconCode(symbol: string) {
+  public generateSvgIconCode(symbol: string) {
     return `<svg-icon name="${symbol}" />`
   }
 }

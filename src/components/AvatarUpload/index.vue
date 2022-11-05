@@ -30,16 +30,16 @@ import { AppModule } from '@/store/modules/app'
 })
 export default class extends Vue {
   // You can add more Prop, see: https://github.com/dai-siki/vue-image-crop-upload#usage
-  @Prop({ required: true }) private value!: boolean
-  @Prop({ required: true }) private url!: string
-  @Prop({ required: true }) private field!: string
-  @Prop({ default: 300 }) private width!: number
-  @Prop({ default: 300 }) private height!: number
-  @Prop({ default: () => null }) private params!: object
-  @Prop({ default: () => null }) private headers!: object
+  @Prop({ required: true }) public value!: boolean
+  @Prop({ required: true }) public url!: string
+  @Prop({ required: true }) public field!: string
+  @Prop({ default: 300 }) public width!: number
+  @Prop({ default: 300 }) public height!: number
+  @Prop({ default: () => null }) public params!: object
+  @Prop({ default: () => null }) public headers!: object
 
   // https://github.com/dai-siki/vue-image-crop-upload#language-package
-  private languageTypeList: { [key: string]: string } = {
+  public languageTypeList: { [key: string]: string } = {
     en: 'en',
     zh: 'zh',
     es: 'es-MX',
@@ -60,19 +60,19 @@ export default class extends Vue {
     return this.languageTypeList[AppModule.language]
   }
 
-  private srcFileSet(fileName: string, fileType: string, fileSize: number) {
+  public srcFileSet(fileName: string, fileType: string, fileSize: number) {
     this.$emit('src-file-set', fileName, fileType, fileSize)
   }
 
-  private cropSuccess(imgDataUrl: string, field: string) {
+  public cropSuccess(imgDataUrl: string, field: string) {
     this.$emit('crop-success', imgDataUrl, field)
   }
 
-  private cropUploadSuccess(jsonData: any, field: string) {
+  public cropUploadSuccess(jsonData: any, field: string) {
     this.$emit('crop-upload-success', jsonData, field)
   }
 
-  private cropUploadFail(status: boolean, field: string) {
+  public cropUploadFail(status: boolean, field: string) {
     this.$emit('crop-upload-fail', status, field)
   }
 }

@@ -60,17 +60,17 @@ export interface IUploadObject {
   name: 'EditorImageUpload'
 })
 export default class extends Vue {
-  @Prop({ required: true }) private color!: string
+  @Prop({ required: true }) public color!: string
 
-  private dialogVisible = false
-  private listObj: { [key: string]: IUploadObject } = {}
-  private defaultFileList = []
+  public dialogVisible = false
+  public listObj: { [key: string]: IUploadObject } = {}
+  public defaultFileList = []
 
-  private checkAllSuccess() {
+  public checkAllSuccess() {
     return Object.keys(this.listObj).every(item => this.listObj[item].hasSuccess)
   }
 
-  private handleSubmit() {
+  public handleSubmit() {
     const arr = Object.keys(this.listObj).map(v => this.listObj[v])
     if (!this.checkAllSuccess()) {
       this.$message('Please wait for all images to be uploaded successfully. If there is a network problem, please refresh the page and upload again!')
@@ -82,7 +82,7 @@ export default class extends Vue {
     this.dialogVisible = false
   }
 
-  private handleSuccess(response: any, file: ElUploadInternalRawFile) {
+  public handleSuccess(response: any, file: ElUploadInternalRawFile) {
     const uid = file.uid
     const objKeyArr = Object.keys(this.listObj)
     for (let i = 0, len = objKeyArr.length; i < len; i++) {
@@ -94,7 +94,7 @@ export default class extends Vue {
     }
   }
 
-  private handleRemove(file: ElUploadInternalRawFile) {
+  public handleRemove(file: ElUploadInternalRawFile) {
     const uid = file.uid
     const objKeyArr = Object.keys(this.listObj)
     for (let i = 0, len = objKeyArr.length; i < len; i++) {
@@ -105,7 +105,7 @@ export default class extends Vue {
     }
   }
 
-  private beforeUpload(file: ElUploadInternalRawFile) {
+  public beforeUpload(file: ElUploadInternalRawFile) {
     const fileName = file.uid
     const img = new Image()
     img.src = window.URL.createObjectURL(file)

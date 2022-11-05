@@ -93,23 +93,23 @@ import { getArticles } from '@/api/articles'
   name: 'TabPane'
 })
 export default class extends Vue {
-  @Prop({ default: 'CN' }) private type!: string
+  @Prop({ default: 'CN' }) public type!: string
 
-  private list = null
-  private listQuery = {
+  public list = null
+  public listQuery = {
     page: 1,
     limit: 5,
     type: this.type,
     sort: 'id'
   }
 
-  private loading = false
+  public loading = false
 
   created() {
     this.getList()
   }
 
-  private async getList() {
+  public async getList() {
     this.loading = true
     this.$emit('create') // for test
     const { data } = await getArticles(this.listQuery)

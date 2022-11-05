@@ -81,15 +81,15 @@ import { exportJson2Excel } from '@/utils/excel'
   name: 'MergeHeader'
 })
 export default class extends Vue {
-  private list: IArticleData[] = []
-  private listLoading = true
-  private downloadLoading = false
+  public list: IArticleData[] = []
+  public listLoading = true
+  public downloadLoading = false
 
   created() {
     this.fetchData()
   }
 
-  private async fetchData() {
+  public async fetchData() {
     this.listLoading = true
     const { data } = await getArticles({ /* Your params here */ })
     this.list = data.items
@@ -99,7 +99,7 @@ export default class extends Vue {
     }, 0.5 * 1000)
   }
 
-  private handleDownload() {
+  public handleDownload() {
     this.downloadLoading = true
     const multiHeader = [['Id', 'Main Information', '', '', 'Date']]
     const header = ['', 'Title', 'Author', 'Readings', '']

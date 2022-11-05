@@ -133,11 +133,11 @@ const editor = new Editor(options);
   }
 })
 export default class extends Vue {
-  private content1 = fullcontent
-  private content2 = simpleContent
-  private content3 = simpleContent
-  private content4 = simpleContent
-  private html = ''
+  public content1 = fullcontent
+  public content2 = simpleContent
+  public content3 = simpleContent
+  public content4 = simpleContent
+  public html = ''
 
   mounted() {
     // FIXES auto focus issue caused by MarkdownEditor
@@ -148,7 +148,7 @@ export default class extends Vue {
     return AppModule.language
   }
 
-  private getHtml() {
+  public getHtml() {
     this.html = (this.$refs.markdownEditor as MarkdownEditor).getHtml()
   }
 }

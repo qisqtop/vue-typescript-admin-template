@@ -35,21 +35,21 @@ import DraggableKanban from '@/components/DraggableKanban/index.vue'
   }
 })
 export default class extends Vue {
-  private group = 'mission'
-  private list1 = [
+  public group = 'mission'
+  public list1 = [
     { name: 'Mission', id: 1 },
     { name: 'Mission', id: 2 },
     { name: 'Mission', id: 3 },
     { name: 'Mission', id: 4 }
   ]
 
-  private list2 = [
+  public list2 = [
     { name: 'Mission', id: 5 },
     { name: 'Mission', id: 6 },
     { name: 'Mission', id: 7 }
   ]
 
-  private list3 = [
+  public list3 = [
     { name: 'Mission', id: 8 },
     { name: 'Mission', id: 9 },
     { name: 'Mission', id: 10 }

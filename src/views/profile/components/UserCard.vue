@@ -83,7 +83,7 @@ import PanThumb from '@/components/PanThumb/index.vue'
   }
 })
 export default class extends Vue {
-  @Prop({ required: true }) private user!: IProfile
+  @Prop({ required: true }) public user!: IProfile
 }
 </script>
 

@@ -120,10 +120,10 @@ import Pagination from '@/components/Pagination/index.vue'
   }
 })
 export default class extends Vue {
-  private total = 0
-  private list: IArticleData[] = []
-  private listLoading = true
-  private listQuery = {
+  public total = 0
+  public list: IArticleData[] = []
+  public listLoading = true
+  public listQuery = {
     page: 1,
     limit: 20
   }
@@ -132,7 +132,7 @@ export default class extends Vue {
     this.getList()
   }
 
-  private async getList() {
+  public async getList() {
     this.listLoading = true
     const { data } = await getArticles(this.listQuery)
     this.list = data.items

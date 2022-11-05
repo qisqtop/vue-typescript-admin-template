@@ -21,9 +21,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   name: 'BackToTop'
 })
 export default class extends Vue {
-  @Prop({ default: 400 }) private visibilityHeight!: number
-  @Prop({ default: 'fade' }) private transitionName!: string
-  @Prop({ default: 0 }) private backPosition!: number
+  @Prop({ default: 400 }) public visibilityHeight!: number
+  @Prop({ default: 'fade' }) public transitionName!: string
+  @Prop({ default: 0 }) public backPosition!: number
   @Prop({
     default: () => {
       return {
@@ -36,11 +36,11 @@ export default class extends Vue {
         background: '#e7eaf1'
       }
     }
-  }) private customStyle!: object
+  }) public customStyle!: object
 
-  private visible = false
-  private isMoving = false
-  private interval?: number
+  public visible = false
+  public isMoving = false
+  public interval?: number
 
   mounted() {
     window.addEventListener('scroll', this.handleScroll)
@@ -53,11 +53,11 @@ export default class extends Vue {
     }
   }
 
-  private handleScroll() {
+  public handleScroll() {
     this.visible = window.pageYOffset > this.visibilityHeight
   }
 
-  private backToTop() {
+  public backToTop() {
     if (this.isMoving) return
     const start = window.pageYOffset
     let i = 0
@@ -75,7 +75,7 @@ export default class extends Vue {
     }, 16.7)
   }
 
-  private easeInOutQuad(t: number, b: number, c: number, d: number) {
+  public easeInOutQuad(t: number, b: number, c: number, d: number) {
     if ((t /= d / 2) < 1) return (c / 2) * t * t + b
     return (-c / 2) * (--t * (t - 2) - 1) + b
   }

@@ -138,10 +138,10 @@ import SwitchRoles from './components/SwitchRoles.vue'
   }
 })
 export default class extends Vue {
-  private key = 1 // 为了能每次切换权限的时候重新初始化指令
-  private checkPermission = checkPermission
+  public key = 1 // 为了能每次切换权限的时候重新初始化指令
+  public checkPermission = checkPermission
 
-  private handleRolesChange() {
+  public handleRolesChange() {
     this.key++
   }
 }
