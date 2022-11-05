@@ -1,8 +1,7 @@
 {
-  "name": "vue-typescript-admin-template",
+  "name": "vue-typescript-admin",
   "version": "1.0.0",
   "private": true,
-  "author": "Chong Guo <armourcy@gmail.com>",
   "scripts": {
     "dev": "vue-cli-service serve",
     "serve": "concurrently \"npm:mock\" \"vue-cli-service serve\"",
@@ -104,9 +103,6 @@
     "vue-cli-plugin-style-resources-loader": "^0.1.5",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^5.30.0"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
   },
   "keywords": [
     "vue",
